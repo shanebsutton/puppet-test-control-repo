@@ -8,6 +8,7 @@ forge 'https://forge.puppet.com'
 mod 'dsc-powershellget', '2.2.5-0-3'
 mod 'puppetlabs-chocolatey', '6.2.0'
 mod 'puppetlabs-pwshlib', '0.10.1'
+mod 'puppetlabs-registry', '4.1.0'
 mod 'puppetlabs-stdlib', '8.2.0'
 
 # Modules from Git
