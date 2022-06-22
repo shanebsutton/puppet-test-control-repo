@@ -5,10 +5,6 @@ class role::mssqlserverrole {
   include profile::base
   include chocolatey
   
-  class { 'chocolatey':
-    log_output => true,
-  }
-  
   package { 'notepadplusplus':
     ensure   => '8.4.2',
     provider => 'chocolatey',
