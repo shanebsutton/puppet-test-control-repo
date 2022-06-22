@@ -4,4 +4,9 @@ class role::mssqlserverrole {
   #All roles should include the base profile
   include profile::base
   
+  package { 'notepadplusplus':
+    ensure   => '8.4.2',
+    provider => 'chocolatey',
+    source   => 'https://community.chocolatey.org/api/v2/',
+  }
 }
