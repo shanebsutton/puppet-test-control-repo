@@ -10,4 +10,10 @@ class role::mssqlserverrole {
     provider => 'chocolatey',
     source   => 'https://community.chocolatey.org/api/v2/',
   }
+  
+  dsc_psmodule { 'SqlServerPowerShell':
+    dsc_name             => 'SqlServer',
+    dsc_ensure           => present,
+    dsc_installedversion => '21.1.18256',
+  }
 }
