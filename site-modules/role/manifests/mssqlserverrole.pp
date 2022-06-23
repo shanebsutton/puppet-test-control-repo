@@ -5,11 +5,11 @@ class role::mssqlserverrole {
   include profile::base
   include chocolatey
 
-  dsc_psrepository { 'Trust public gallery':
-    dsc_name               => 'PSGallery',
-    dsc_ensure             => present,
-    dsc_installationpolicy => trusted,
-  }
+  #dsc_psrepository { 'Trust public gallery':
+  #  dsc_name               => 'PSGallery',
+  #  dsc_ensure             => present,
+  #  dsc_installationpolicy => trusted,
+  #}
 
   package { 'notepadplusplus':
     ensure   => '8.4.2',
@@ -19,7 +19,7 @@ class role::mssqlserverrole {
   
   dsc_psmodule { 'SqlServerPowerShell':
     dsc_name            => 'SqlServer',
-    dsc_ensure          => Present,
+    dsc_ensure          => 'Present',
     dsc_requiredversion => '21.1.18256',
   }
 }
