@@ -13,7 +13,7 @@ class role::mssqlserverrole {
   
   dsc_psmodule { 'SqlServerPowerShell':
     dsc_name             => 'SqlServer',
-    dsc_ensure           => present,
+    dsc_ensure           => Present,
     dsc_installedversion => '21.1.18256',
   }
 }
