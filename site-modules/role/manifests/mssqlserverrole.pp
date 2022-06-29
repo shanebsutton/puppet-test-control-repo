@@ -41,5 +41,6 @@ class role::mssqlserverrole {
     ensure          => 'Present',
     source          => 'C:\\Temp\\SSMS-Setup-ENU_1812.exe',
     install_options => '/install /quiet /norestart',
+    productid       => '990516C3-F457-4E25-B13E-B1599B2F4156',
   }
 }
