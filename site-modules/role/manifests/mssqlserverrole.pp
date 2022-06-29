@@ -32,7 +32,7 @@ class role::mssqlserverrole {
   package { 'InstallSSMS':
     ensure    => 'Present',
     name      => 'SSMS-Setup-ENU_1812',
-    path      => 'C:\\Temp\\SSMS-Setup-ENU_1812.exe',
+    source    => 'C:\\Temp\\SSMS-Setup-ENU_1812.exe',
     arguments => '/install /quiet /norestart',
     productid => '990516C3-F457-4E25-B13E-B1599B2F4156',
   }
