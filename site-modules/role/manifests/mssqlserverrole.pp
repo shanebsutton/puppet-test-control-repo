@@ -40,6 +40,7 @@ class role::mssqlserverrole {
   package { 'Microsoft SQL Server Management Studio - 18.12':
     ensure          => '15.0.18420.0',
     source          => 'C:\\Temp\\SSMS-Setup-ENU_1812.exe',
-    install_options => '/install /quiet /norestart',
+    #install_options => '/install /quiet /norestart',
+    install_options => '/Quiet',
   }
 }
