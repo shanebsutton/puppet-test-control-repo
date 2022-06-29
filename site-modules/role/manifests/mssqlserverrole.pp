@@ -22,4 +22,10 @@ class role::mssqlserverrole {
     dsc_ensure          => 'Present',
     dsc_requiredversion => '21.1.18256',
   }
+  
+  dsc_psmodule { 'dbatools':
+    dsc_name            => 'dbatools',
+    dsc_ensure          => 'Present',
+    dsc_requiredversion => '1.1.109',
+  }
 }
