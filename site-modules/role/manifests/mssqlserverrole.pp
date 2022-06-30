@@ -11,24 +11,24 @@ class role::mssqlserverrole {
     dsc_installationpolicy => 'Trusted',
   }
 
-  package { 'notepadplusplus':
-    ensure   => '8.4.2',
-    provider => 'chocolatey',
-    source   => 'https://community.chocolatey.org/api/v2/',
-  }
-  
   dsc_psmodule { 'SqlServerPowerShell':
     dsc_name            => 'SqlServer',
     dsc_ensure          => 'Present',
     dsc_requiredversion => '21.1.18256',
   }
-  
+
   dsc_psmodule { 'dbatools':
     dsc_name            => 'dbatools',
     dsc_ensure          => 'Present',
     dsc_requiredversion => '1.1.109',
   }
-  
+
+  package { 'notepadplusplus':
+    ensure   => '8.4.2',
+    provider => 'chocolatey',
+    source   => 'https://community.chocolatey.org/api/v2/',
+  }
+
   #package { 'InstallSSMS':
   #  ensure          => 'Present',
   #  name            => 'SSMS-Setup-ENU_1812',
@@ -36,11 +36,58 @@ class role::mssqlserverrole {
   #  install_options => '/install /quiet /norestart',
   #  productid       => '990516C3-F457-4E25-B13E-B1599B2F4156',
   #}
-  
+
   package { 'Microsoft SQL Server Management Studio - 18.12':
     ensure          => '15.0.18420.0',
     source          => 'C:\\Temp\\SSMS-Setup-ENU_1812.exe',
     #install_options => '/install /quiet /norestart',
     install_options => '/Quiet',
+  }
+
+  sqlserver_instance { 'TESTINSTANCE01':
+    source                => 'C:\\Temp',
+    name                  => 'TESTINSTANCE01',
+    features              => ['SQLEngine'],
+    security_mode         => 'SQL',
+    sa_pwd                => 'ReallyBadPassword12!',
+    #sql_svc_account       => '',
+    #sql_svc_password      => '',
+    #agt_svc_account       => '',
+    #agt_svc_password      => '',
+    sql_sysadmin_accounts => 'ssutton_gcp',
+    install_switches      => {
+      'USEENGLISH'             => 1,
+      'INSTALLSHAREDDIR'       => 'C:\\Program Files\\Microsoft SQL Server',
+      'INSTALLSHAREDWOWDIR'    => 'C:\\Program Files (x86)\\Microsoft SQL Server',
+      'INSTANCEDIR'            => 'C:\\Program Files\\Microsoft SQL Server',
+      'SQLUSERDBDIR'           => 'D:\\',
+      'SQLUSERDBLOGDIR'        => 'L:\\',
+      'SQLTEMPDBDIR'           => 'T:\\',
+      'SQLTEMPDBLOGDIR'        => 'T:\\',
+      'SQLSVCSTARTUPTYPE'      => 'Automatic',
+      'AGTSVCSTARTUPTYPE'      => 'Automatic',
+      'BROWSERSVCSTARTUPTYPE'  => 'Automatic',
+      'SQLCOLLATION'           => 'SQL_Latin1_General_CP1_CI_AS',
+      'SQLTEMPDBFILECOUNT'     => 8,
+      'SQLTEMPDBFILESIZE'      => 128,
+      'SQLTEMPDBFILEGROWTH'    => 64,
+      'SQLTEMPDBLOGFILESIZE'   => 128,
+      'SQLTEMPDBLOGFILEGROWTH' => 64,
+      'TCPENABLED'             => 1,
+      'NPENABLED'              => 0,
+      'SQMREPORTING'           => 0,
+      'UPDATEENABLED'          => 1,
+      'UPDATESOURCE'           => 'C:\\Temp',
+    },
+  }
+
+  sqlserver_features { 'Generic Features':
+    source           => 'C:\\Temp',
+    features         => ['Conn','IS'],
+    is_svc_account   => '',
+    is_svc_password  => '',
+    install_switches => {
+      'ISSVCSTARTUPTYPE' => 'Manual',
+    },
   }
 }
