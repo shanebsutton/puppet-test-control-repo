@@ -45,7 +45,7 @@ class role::mssqlserverrole {
   }
 
   sqlserver_instance { 'TESTINSTANCE01':
-    source                => 'C:\\Temp',
+    source                => 'C:\\Temp\\SQL2019',
     name                  => 'TESTINSTANCE01',
     features              => ['SQLEngine'],
     security_mode         => 'SQL',
@@ -77,7 +77,7 @@ class role::mssqlserverrole {
       'NPENABLED'              => 0,
       'SQMREPORTING'           => 0,
       'UPDATEENABLED'          => 1,
-      'UPDATESOURCE'           => 'C:\\Temp',
+      'UPDATESOURCE'           => 'C:\\Temp\\Updates',
     },
   }
 
