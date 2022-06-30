@@ -82,7 +82,7 @@ class role::mssqlserverrole {
   }
 
   sqlserver_features { 'Generic Features':
-    source           => 'C:\\Temp',
+    source           => 'C:\\Temp\\SQL2019',
     features         => ['Conn','IS'],
     is_svc_account   => '',
     is_svc_password  => '',
