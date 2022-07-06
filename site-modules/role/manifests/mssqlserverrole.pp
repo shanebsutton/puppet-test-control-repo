@@ -89,4 +89,12 @@ class role::mssqlserverrole {
       'ISSVCSTARTUPTYPE' => 'Manual',
     },
   }
+
+  # CU1
+  package { 'SQL Server 2019 RTM Cumulative Update (CU) 1 KB4527376':
+    ensure          => 'Present',
+    source          => 'C:\\Temp\\Updates\\sqlserver2019-kb4527376-x64_01dcaca398f0c3380264078463fc1a6cc859ec7c.exe',
+    #install_options => '/install /quiet /norestart',
+    install_options => '/Quiet /Action=Patch /AllInstances /IAcceptSQLServerLicenseTerms',
+  }
 }
