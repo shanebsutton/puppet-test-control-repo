@@ -95,6 +95,6 @@ class role::mssqlserverrole {
     ensure          => 'Present',
     source          => 'C:\\Temp\\Updates\\sqlserver2019-kb4527376-x64_01dcaca398f0c3380264078463fc1a6cc859ec7c.exe',
     #install_options => '/install /quiet /norestart',
-    install_options => '/Quiet /Action=Patch /AllInstances /IAcceptSQLServerLicenseTerms',
+    install_options => ['/Quiet', '/Action=Patch', '/AllInstances', '/IAcceptSQLServerLicenseTerms'],
   }
 }
