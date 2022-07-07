@@ -90,11 +90,13 @@ class role::mssqlserverrole {
     },
   }
 
+  # Puppet will install the CU the first time through, but then fail on subsequent runs.
+  # It does not recognize it as being installed.
   # CU1
-  package { 'Hotfix 4003 for SQL Server 2019 (KB4527376) (64-bit)':
-    #ensure          => '15.0.4003.23',
-    source          => 'C:\\Temp\\Updates\\sqlserver2019-kb4527376-x64_01dcaca398f0c3380264078463fc1a6cc859ec7c.exe',
-    #install_options => '/install /quiet /norestart',
-    install_options => ['/Quiet', '/Action=Patch', '/AllInstances', '/IAcceptSQLServerLicenseTerms'],
-  }
+  # package { 'Hotfix 4003 for SQL Server 2019 (KB4527376) (64-bit)':
+  #   #ensure          => '15.0.4003.23',
+  #   source          => 'C:\\Temp\\Updates\\sqlserver2019-kb4527376-x64_01dcaca398f0c3380264078463fc1a6cc859ec7c.exe',
+  #   #install_options => '/install /quiet /norestart',
+  #   install_options => ['/Quiet', '/Action=Patch', '/AllInstances', '/IAcceptSQLServerLicenseTerms'],
+  # }
 }
