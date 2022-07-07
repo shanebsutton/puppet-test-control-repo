@@ -76,7 +76,7 @@ class role::mssqlserverrole {
       'NPENABLED'              => 0,
       'SQMREPORTING'           => 0,
       'UPDATEENABLED'          => 1,
-      'UPDATESOURCE'           => 'C:\\Temp\\Updates',
+      'UpdateSource'           => 'C:\\Temp\\Updates',
     },
   }
 
